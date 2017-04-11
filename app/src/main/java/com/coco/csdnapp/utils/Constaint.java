@@ -10,4 +10,5 @@ public interface Constaint {
     int NEWS_TYPE_YANFA = 3;
     int NEWS_TYPE_CHENGXUYUAN = 4;
     int NEWS_TYPE_YUNJISUAN = 5;
+    String PRE_CSDN_APP = "csdn_app";
 }

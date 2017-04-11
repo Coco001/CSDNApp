@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.coco.csdnapp.R;
 import com.coco.csdnapp.bean.NewsItem;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -102,6 +103,11 @@ public class NewsItemAdapter extends BaseAdapter {
     }
 
     public void addAll(List<NewsItem> mDatas) {
+        this.mDatas.addAll(mDatas);
+    }
+
+    public void setDatas(List<NewsItem> mDatas) {
+        this.mDatas.clear();
         this.mDatas.addAll(mDatas);
     }
 }
