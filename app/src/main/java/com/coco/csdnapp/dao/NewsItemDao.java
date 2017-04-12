@@ -3,7 +3,17 @@ package com.coco.csdnapp.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.coco.csdnapp.bean.CommonException;
+import com.coco.csdnapp.bean.News;
 import com.coco.csdnapp.bean.NewsItem;
+import com.coco.csdnapp.utils.DataUtil;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +32,7 @@ public class NewsItemDao {
         String sql = "insert into tb_newsItem (title,link,date,imgLink,content,newstype) values(?,?,?,?,?,?) ;";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL(sql, new Object[]{newsItem.getTitle(), newsItem.getLink(), newsItem.getDate(), newsItem.getImgLink(),
-                        newsItem.getContent(), newsItem.getNewsType()});
+                newsItem.getContent(), newsItem.getNewsType()});
         db.close();
     }
 

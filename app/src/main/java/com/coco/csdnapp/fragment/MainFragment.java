@@ -1,17 +1,19 @@
 package com.coco.csdnapp.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.coco.csdnapp.NewsContentActivity;
 import com.coco.csdnapp.R;
 import com.coco.csdnapp.adapter.NewsItemAdapter;
 import com.coco.csdnapp.bean.CommonException;
@@ -94,6 +96,15 @@ public class MainFragment extends Fragment {
             isFirstIn = false;
         }
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                NewsItem item = mDatas.get(position);
+                Intent intent = new Intent(getActivity(), NewsContentActivity.class);
+                intent.putExtra("url", item.getLink());
+                startActivity(intent);
+            }
+        });
     }
 
     private void refreshData(int flag) {
